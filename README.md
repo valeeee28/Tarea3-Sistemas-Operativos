@@ -20,31 +20,6 @@ Abrir una terminal en la carpeta principal del proyecto y ejecutar:
 g++ -std=c++17 -Wall -Wextra -Wpedantic -Isrc src/main.cpp src/disco.cpp src/simulacion.cpp -pthread -o simulador
 
 ```
-## Ejecutar las pruebas
-
-### Pruebas unitarias
-
-Compilar las pruebas:
-
-```bash
-g++ -std=c++17 -Wall -Wextra -Wpedantic -pthread -Isrc tests/pruebas.cpp src/disco.cpp -o pruebas
-```
-
-Ejecutarlas:
-
-```bash
-./pruebas
-```
-
-### Pruebas de consola
-
-Con el simulador compilado, ejecutar:
-
-```bash
-python3 tests/verificar_consola.py ./simulador
-```
-
-Estas pruebas verifican el funcionamiento de los tres mecanismos de asignación, los tiempos de simulación y distintos casos de entrada y errores.
 
 ## Ejecutar el programa
 
@@ -68,8 +43,6 @@ Al iniciar, el programa solicitará:
 5. Tamaño máximo de los archivos en KB.
 
 Los valores deben ingresarse como números enteros, sin escribir las unidades.
-
-## Funcionamiento
 
 ## Funcionamiento
 
@@ -103,7 +76,15 @@ Los valores deben ingresarse como números enteros, sin escribir las unidades.
 - `tests/pruebas.cpp`: contiene las pruebas unitarias de los mecanismos de asignación y la administración del disco.
 
 - `tests/verificar_consola.py`: verifica los tiempos, eventos y casos de entrada del simulador.
+## Decisiones de diseño
 
+- Se implementó una clase `Disco` para administrar los bloques, archivos y estadísticas.
+- Cada bloque almacena información sobre su propietario y, en el caso de la asignación enlazada, un puntero al siguiente bloque.
+- Se utiliza un tamaño de puntero simulado de 4 bytes.
+- En la asignación contigua, los bloques de cada archivo se almacenan consecutivamente.
+- En la asignación enlazada, los bloques pueden ocupar posiciones no consecutivas y se conectan mediante punteros.
+- En la asignación indexada, cada archivo utiliza un bloque adicional para almacenar las direcciones de sus bloques de datos.
+- La simulación utiliza eventos periódicos para crear, eliminar y consultar archivos.
 ## Resultados
 
 Al finalizar se muestran estadísticas sobre:
