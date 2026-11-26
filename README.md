@@ -52,6 +52,7 @@ Los valores deben ingresarse como números enteros, sin escribir las unidades.
 - Se registra la ubicación física de los bloques y los accesos necesarios para encontrarlos.
 - Se calcula la fragmentación externa del disco.
 - La simulación termina cuando no hay espacio suficiente para crear un archivo, cuando la fragmentación externa impide una asignación contigua o cuando se supera la capacidad del bloque índice.
+  
 ## Mecanismos de asignación
 
 **Asignación contigua:** los bloques de cada archivo se almacenan consecutivamente.
@@ -73,9 +74,7 @@ Los valores deben ingresarse como números enteros, sin escribir las unidades.
 - `src/main.cpp`: solicita los datos iniciales y comienza el programa.
 - `src/disco.h` y `src/disco.cpp`: contienen la administración del disco y los mecanismos de asignación.
 - `src/simulacion.h` y `src/simulacion.cpp`: controlan los tiempos, eventos y resultados de la simulación.
-- `tests/pruebas.cpp`: contiene las pruebas unitarias de los mecanismos de asignación y la administración del disco.
-
-- `tests/verificar_consola.py`: verifica los tiempos, eventos y casos de entrada del simulador.
+  
 ## Decisiones de diseño
 
 - Se implementó una clase `Disco` para administrar los bloques, archivos y estadísticas.
@@ -85,6 +84,7 @@ Los valores deben ingresarse como números enteros, sin escribir las unidades.
 - En la asignación enlazada, los bloques pueden ocupar posiciones no consecutivas y se conectan mediante punteros.
 - En la asignación indexada, cada archivo utiliza un bloque adicional para almacenar las direcciones de sus bloques de datos.
 - La simulación utiliza eventos periódicos para crear, eliminar y consultar archivos.
+  
 ## Resultados
 
 Al finalizar se muestran estadísticas sobre:
