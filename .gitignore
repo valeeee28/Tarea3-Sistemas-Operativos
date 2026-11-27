@@ -1,0 +1,18 @@
+# Archivos temporales
+*.d
+*.o
+*.obj
+
+# Bibliotecas compiladas
+*.so
+*.dll
+*.a
+*.lib
+
+# Ejecutables
+*.exe
+*.out
+*.app
+/simulador
+/pruebas
+/torneo
